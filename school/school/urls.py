@@ -18,9 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from django.shortcuts import redirect
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', lambda request: redirect('highschool/')),
     path('highschool/', include('highschool.urls')),
 ]
 
@@ -28,3 +30,5 @@ if settings.DEBUG:
     urlpatterns += [
         path("__reload__/", include("django_browser_reload.urls")),
     ]
+
+
